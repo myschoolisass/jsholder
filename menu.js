@@ -1,7 +1,6 @@
-// Define a menu object with items and their associated URLs
 var menu = {
-    "Home": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embedtoggler.js",
-    "Products": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/products.js",
+    "Proxy With Toggle": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embedtoggler.js",
+    "Proxy (alone)": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embed.js",
     "Services": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/services.js",
     "Contact": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/contact.js"
 };
@@ -59,6 +58,7 @@ function handleMenuItemClick(item) {
             .then(scriptText => {
                 // Execute the JavaScript code
                 eval(scriptText);
+var menuContainer = document.getElementById('menu'); menuContainer.remove(); // Delete the entire menu
             })
             .catch(error => {
                 console.error("Error loading script:", error);
