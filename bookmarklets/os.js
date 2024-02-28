@@ -1,4 +1,5 @@
     const button = document.createElement('button');
+// Style the "create window" button
 button.style.backgroundColor = '#4CAF50'; // Green background
 button.style.color = 'white'; // White text
 button.style.padding = '10px 20px'; // Padding
@@ -12,16 +13,6 @@ hotbar.style.position = 'fixed';
 hotbar.style.bottom = '60px';
 hotbar.style.right = '20px';
 document.body.appendChild(hotbar);
-
-// Create a button with the Bing favicon
-const bingButton = document.createElement('button');
-bingButton.style.backgroundImage = 'url(https://www.bing.com/favicon.ico)';
-bingButton.style.backgroundSize = 'cover';
-bingButton.style.width = '40px';
-bingButton.style.height = '40px';
-bingButton.style.border = 'none';
-bingButton.style.borderRadius = '5px';
-hotbar.appendChild(bingButton);
 
 // Function to create a window with tabs
 function createWindowWithTabs() {
@@ -38,8 +29,12 @@ function createWindowWithTabs() {
 
     // Create a tab container
     const tabContainer = document.createElement('div');
+    tabContainer.classList.add('tab-container');
     tabContainer.style.backgroundColor = '#f1f1f1';
     tabContainer.style.overflow = 'hidden';
+    tabContainer.style.height = '40px'; // Set height for the tab container
+    tabContainer.style.display = 'flex'; // Use flexbox to align tabs
+    tabContainer.style.alignItems = 'center'; // Vertically center the tabs
     windowDiv.appendChild(tabContainer);
 
     // Create an iframe container
@@ -48,28 +43,56 @@ function createWindowWithTabs() {
     iframeContainer.style.overflow = 'hidden';
     windowDiv.appendChild(iframeContainer);
 
+    let activeTab = null; // Track the active tab
+
     // Function to create a new tab
     function createTab(url) {
+        const tabId = 'tab-' + Math.random().toString(36).substr(2, 9); // Generate a unique tab ID
+
         // Create a tab button
         const tabButton = document.createElement('button');
+        tabButton.id = tabId;
         tabButton.textContent = url;
         tabButton.style.backgroundColor = 'inherit';
         tabButton.style.border = 'none';
         tabButton.style.outline = 'none';
         tabButton.style.cursor = 'pointer';
-        tabButton.style.padding = '10px';
+        tabButton.style.padding = '5px 10px'; // Adjust padding for better appearance
         tabButton.style.marginRight = '2px';
-        tabButton.addEventListener('click', () => {
-            iframe.src = url;
-        });
         tabContainer.appendChild(tabButton);
 
         // Create an iframe
         const iframe = document.createElement('iframe');
+        iframe.id = 'iframe-' + tabId;
         iframe.src = url;
         iframe.style.width = '100%';
         iframe.style.height = '100%';
+        iframe.style.display = 'none'; // Initially hide the iframe
         iframeContainer.appendChild(iframe);
+
+        // Show the iframe when its tab is clicked
+        tabButton.addEventListener('click', () => {
+            // Hide all iframes
+            iframeContainer.childNodes.forEach(child => {
+                child.style.display = 'none';
+            });
+            // Show the clicked tab's iframe
+            iframe.style.display = 'block';
+
+            // Update active tab styling
+            if (activeTab) {
+                activeTab.style.backgroundColor = 'inherit';
+            }
+            tabButton.style.backgroundColor = '#ddd';
+            activeTab = tabButton;
+        });
+
+        // Show the first tab's iframe by default
+        if (iframeContainer.childNodes.length === 1) {
+            iframe.style.display = 'block';
+            tabButton.style.backgroundColor = '#ddd';
+            activeTab = tabButton;
+        }
     }
 
     // Create a delete button
@@ -97,8 +120,8 @@ function createWindowWithTabs() {
 
     // Make the window draggable
     let offsetX, offsetY;
-    windowDiv.addEventListener('mousedown', (event) => {
-        if (event.target === resizeHandle || event.target.closest('.tab-container')) return; // Prevent dragging when resizing or clicking on tabs
+    tabContainer.addEventListener('mousedown', (event) => {
+        if (event.target === resizeHandle) return; // Prevent dragging when resizing
         offsetX = event.clientX - windowDiv.getBoundingClientRect().left;
         offsetY = event.clientY - windowDiv.getBoundingClientRect().top;
         document.addEventListener('mousemove', onMouseMove);
@@ -107,8 +130,11 @@ function createWindowWithTabs() {
     });
 
     function onMouseMove(event) {
-        windowDiv.style.left = event.clientX - offsetX + 'px';
-        windowDiv.style.top = event.clientY - offsetY + 'px';
+        const newX = event.clientX - offsetX;
+        const newY = event.clientY - offsetY;
+        // Limit the window's position to prevent it from going off-screen
+        windowDiv.style.left = Math.min(Math.max(newX, 0), window.innerWidth - windowDiv.offsetWidth) + 'px';
+        windowDiv.style.top = Math.min(Math.max(newY, 0), window.innerHeight - windowDiv.offsetHeight) + 'px';
     }
 
     function onMouseUp() {
@@ -125,8 +151,8 @@ function createWindowWithTabs() {
     });
 
     function onResizeMove(event) {
-        const width = event.clientX - windowDiv.getBoundingClientRect().left;
-        const height = event.clientY - windowDiv.getBoundingClientRect().top;
+        const width = Math.max(event.clientX - windowDiv.getBoundingClientRect().left, 200); // Minimum width
+        const height = Math.max(event.clientY - windowDiv.getBoundingClientRect().top, 150); // Minimum height
         windowDiv.style.width = width + 'px';
         windowDiv.style.height = height + 'px';
     }
@@ -138,9 +164,45 @@ function createWindowWithTabs() {
 
     document.body.appendChild(windowDiv);
 
-    // Create initial tabs
+    // Create initial tab
     createTab('https://www.bing.com');
+
+    // Create a button to add a new tab within the window
+    const addTabButton = document.createElement('button');
+    addTabButton.textContent = '+';
+    addTabButton.style.padding = '5px 10px';
+    addTabButton.style.position = 'absolute';
+    addTabButton.style.right = '0';
+    addTabButton.style.top = '0';
+    addTabButton.addEventListener('click', () => {
+        createTab('https://www.bing.com'); // Always open Bing.com in the new tab
+    });
+    windowDiv.appendChild(addTabButton); // Add the button to the windowDiv instead of tabContainer
+
+    // Return the function to create new tabs
+    return createTab;
 }
 
 // Attach event listener to the Bing button
-bingButton.addEventListener('click', createWindowWithTabs);
+const createTab = createWindowWithTabs();
+
+// Create a button to add a new window with tabs
+const newWindowButton = document.createElement('button');
+newWindowButton.textContent = 'New Window';
+newWindowButton.style.marginLeft = '10px';
+newWindowButton.style.backgroundColor = '#4CAF50'; // Green background
+newWindowButton.style.color = 'white'; // White text
+newWindowButton.style.padding = '10px 20px'; // Padding
+newWindowButton.style.border = 'none'; // No border
+newWindowButton.style.borderRadius = '5px'; // Rounded corners
+newWindowButton.style.fontSize = '16px'; // Font size
+newWindowButton.style.backgroundImage = 'url(https://www.bing.com/favicon.ico)'; // Bing favicon
+newWindowButton.style.backgroundRepeat = 'no-repeat';
+newWindowButton.style.backgroundPosition = '10px center';
+newWindowButton.style.backgroundSize = '20px';
+newWindowButton.style.textAlign = 'right';
+newWindowButton.style.paddingLeft = '40px'; // Adjust padding to accommodate the favicon
+newWindowButton.addEventListener('click', () => {
+    createWindowWithTabs(); // Create a new window with tabs
+});
+hotbar.appendChild(newWindowButton);
