@@ -1,7 +1,7 @@
 var menu = {
     "Proxy With Toggle": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embedtoggler.js",
     "Proxy (alone)": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embed.js",
-    "Services": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/services.js",
+    "Bookmarklet Executor": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmark.js",
     "Contact": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/contact.js"
 };
 
