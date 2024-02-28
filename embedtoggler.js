@@ -1,8 +1,8 @@
 const toggleButton = document.createElement("button");
 toggleButton.textContent = "Toggle iframe";
 toggleButton.style.position = "fixed";
-toggleButton.style.top = "20px";
-toggleButton.style.left = "20px";
+toggleButton.style.bottom = "20px";
+toggleButton.style.right = "20px";
 toggleButton.style.zIndex = "9999";
 toggleButton.style.backgroundColor = "#4CAF50"; // Green background
 toggleButton.style.color = "white"; // White text
