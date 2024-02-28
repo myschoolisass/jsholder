@@ -1,4 +1,5 @@
 /// execute_script.js
+alert("working");
 window.addEventListener("keyup", event => {
     if (event.ctrlKey && event.which === 192) {
         // Check if the current domain is instructure.com or its subdomains
