@@ -1,6 +1,12 @@
 var menu = {
     "Minecraft": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/minecraft.js",
-        "OS": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/os.js",
+        "Mini browser-gaming thing": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/os.js",
+        "let there be Light": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/light.js",
+        "3d-Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/3d.js",
+        "Picture In Picture": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/ytpop.js",
+        "Web Piano": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/piano.js",
+        "History Flood": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/flood.js",
+        "Spin": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/spin.js",
 };
 
 // CSS styles
