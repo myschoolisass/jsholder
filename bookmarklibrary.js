@@ -1,5 +1,6 @@
 var menu = {
-    "Bookmarkletone": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/what.js",
+    "Minecraft": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/minecraft.js",
+        "OS": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/os.js",
 };
 
 // CSS styles
