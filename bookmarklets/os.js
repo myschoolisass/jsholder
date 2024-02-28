@@ -1,5 +1,5 @@
-    const button = document.createElement('button');
 // Style the "create window" button
+    const button = document.createElement('button');
 button.style.backgroundColor = '#4CAF50'; // Green background
 button.style.color = 'white'; // White text
 button.style.padding = '10px 20px'; // Padding
@@ -109,8 +109,8 @@ function createWindowWithTabs() {
 
     // Add a resize handle
     const resizeHandle = document.createElement('div');
-    resizeHandle.style.width = '20px'; // Increased size
-    resizeHandle.style.height = '20px'; // Increased size
+    resizeHandle.style.width = '20px';
+    resizeHandle.style.height = '20px';
     resizeHandle.style.backgroundColor = 'gray';
     resizeHandle.style.position = 'absolute';
     resizeHandle.style.bottom = '0';
@@ -206,3 +206,110 @@ newWindowButton.addEventListener('click', () => {
     createWindowWithTabs(); // Create a new window with tabs
 });
 hotbar.appendChild(newWindowButton);
+
+// Function to create a draggable and resizable window
+// Function to create a draggable and resizable window
+function createDraggableWindow(url, imageUrl) {
+    const windowDiv = document.createElement('div');
+    windowDiv.style.width = '400px';
+    windowDiv.style.height = '300px';
+    windowDiv.style.backgroundColor = 'white';
+    windowDiv.style.border = '1px solid black';
+    windowDiv.style.position = 'absolute';
+    windowDiv.style.top = '100px';
+    windowDiv.style.left = '100px';
+    windowDiv.style.zIndex = '1000';
+    windowDiv.style.overflow = 'hidden';
+    windowDiv.style.paddingTop = '20px'; // Increase padding for the dragging bar
+
+    // Create a dragging bar
+    const draggingBar = document.createElement('div');
+    draggingBar.style.width = '100%';
+    draggingBar.style.height = '20px'; // Height of the dragging bar
+    draggingBar.style.backgroundColor = '#f1f1f1'; // Background color of the dragging bar
+    draggingBar.style.cursor = 'move';
+    windowDiv.appendChild(draggingBar);
+
+    // Create an iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.style.width = '100%';
+    iframe.style.height = 'calc(100% - 20px)'; // Adjust height to accommodate the dragging bar
+    windowDiv.appendChild(iframe);
+
+    // Add a resize handle
+    const resizeHandle = document.createElement('div');
+    resizeHandle.style.width = '20px';
+    resizeHandle.style.height = '20px';
+    resizeHandle.style.backgroundColor = 'gray';
+    resizeHandle.style.position = 'absolute';
+    resizeHandle.style.bottom = '0';
+    resizeHandle.style.right = '0';
+    resizeHandle.style.cursor = 'nwse-resize';
+    windowDiv.appendChild(resizeHandle);
+
+    // Make the window draggable
+    let offsetX, offsetY;
+    draggingBar.addEventListener('mousedown', (event) => {
+        offsetX = event.clientX - windowDiv.getBoundingClientRect().left;
+        offsetY = event.clientY - windowDiv.getBoundingClientRect().top;
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+    });
+
+    function onMouseMove(event) {
+        const newX = event.clientX - offsetX;
+        const newY = event.clientY - offsetY;
+        // Limit the window's position to prevent it from going off-screen
+        windowDiv.style.left = Math.min(Math.max(newX, 0), window.innerWidth - windowDiv.offsetWidth) + 'px';
+        windowDiv.style.top = Math.min(Math.max(newY, 0), window.innerHeight - windowDiv.offsetHeight) + 'px';
+    }
+
+    function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    // Make the window resizable
+    resizeHandle.addEventListener('mousedown', (event) => {
+        event.preventDefault(); // Prevent default behavior to allow resizing
+        document.addEventListener('mousemove', onResizeMove);
+        document.addEventListener('mouseup', onResizeUp);
+    });
+
+    function onResizeMove(event) {
+        const width = Math.max(event.clientX - windowDiv.getBoundingClientRect().left, 200); // Minimum width
+        const height = Math.max(event.clientY - windowDiv.getBoundingClientRect().top, 150); // Minimum height
+        windowDiv.style.width = width + 'px';
+        windowDiv.style.height = height + 'px';
+    }
+
+    function onResizeUp() {
+        document.removeEventListener('mousemove', onResizeMove);
+        document.removeEventListener('mouseup', onResizeUp);
+    }
+
+    document.body.appendChild(windowDiv);
+}
+
+
+// Create a button to add a new window without tabs
+const newWindowButtonNoTabs = document.createElement('button');
+newWindowButtonNoTabs.textContent = 'New Window (No Tabs)';
+newWindowButtonNoTabs.style.marginLeft = '10px';
+newWindowButtonNoTabs.style.backgroundColor = '#4CAF50'; // Green background
+newWindowButtonNoTabs.style.color = 'white'; // White text
+newWindowButtonNoTabs.style.padding = '10px 20px'; // Padding
+newWindowButtonNoTabs.style.border = 'none'; // No border
+newWindowButtonNoTabs.style.borderRadius = '5px'; // Rounded corners
+newWindowButtonNoTabs.style.fontSize = '16px'; // Font size
+newWindowButtonNoTabs.style.backgroundImage = 'url(https://lightspeedfilteragent.github.io/images/download.jpg)'; // Custom image
+newWindowButtonNoTabs.style.backgroundRepeat = 'no-repeat';
+newWindowButtonNoTabs.style.backgroundPosition = '10px center';
+newWindowButtonNoTabs.style.backgroundSize = '20px';
+newWindowButtonNoTabs.style.textAlign = 'right';
+newWindowButtonNoTabs.style.paddingLeft = '40px'; // Adjust padding to accommodate the image
+newWindowButtonNoTabs.addEventListener('click', () => {
+    createDraggableWindow('https://myschoolisass.github.io/games.html', 'https://lightspeedfilteragent.github.io/images/download.jpg'); // Create a new window without tabs
+});
+hotbar.appendChild(newWindowButtonNoTabs);
