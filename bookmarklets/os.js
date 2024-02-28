@@ -23,8 +23,8 @@ bingButton.style.border = 'none';
 bingButton.style.borderRadius = '5px';
 hotbar.appendChild(bingButton);
 
-// Function to create a window with an iframe
-function createWindowWithIframe(url) {
+// Function to create a window with tabs
+function createWindowWithTabs() {
     const windowDiv = document.createElement('div');
     windowDiv.style.width = '400px';
     windowDiv.style.height = '300px';
@@ -36,12 +36,41 @@ function createWindowWithIframe(url) {
     windowDiv.style.zIndex = '1000';
     windowDiv.style.overflow = 'hidden';
 
-    // Create an iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = url;
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    windowDiv.appendChild(iframe);
+    // Create a tab container
+    const tabContainer = document.createElement('div');
+    tabContainer.style.backgroundColor = '#f1f1f1';
+    tabContainer.style.overflow = 'hidden';
+    windowDiv.appendChild(tabContainer);
+
+    // Create an iframe container
+    const iframeContainer = document.createElement('div');
+    iframeContainer.style.height = 'calc(100% - 40px)'; // Adjust height to accommodate tabs
+    iframeContainer.style.overflow = 'hidden';
+    windowDiv.appendChild(iframeContainer);
+
+    // Function to create a new tab
+    function createTab(url) {
+        // Create a tab button
+        const tabButton = document.createElement('button');
+        tabButton.textContent = url;
+        tabButton.style.backgroundColor = 'inherit';
+        tabButton.style.border = 'none';
+        tabButton.style.outline = 'none';
+        tabButton.style.cursor = 'pointer';
+        tabButton.style.padding = '10px';
+        tabButton.style.marginRight = '2px';
+        tabButton.addEventListener('click', () => {
+            iframe.src = url;
+        });
+        tabContainer.appendChild(tabButton);
+
+        // Create an iframe
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframeContainer.appendChild(iframe);
+    }
 
     // Create a delete button
     const deleteButton = document.createElement('button');
@@ -57,8 +86,8 @@ function createWindowWithIframe(url) {
 
     // Add a resize handle
     const resizeHandle = document.createElement('div');
-    resizeHandle.style.width = '10px';
-    resizeHandle.style.height = '10px';
+    resizeHandle.style.width = '20px'; // Increased size
+    resizeHandle.style.height = '20px'; // Increased size
     resizeHandle.style.backgroundColor = 'gray';
     resizeHandle.style.position = 'absolute';
     resizeHandle.style.bottom = '0';
@@ -69,7 +98,7 @@ function createWindowWithIframe(url) {
     // Make the window draggable
     let offsetX, offsetY;
     windowDiv.addEventListener('mousedown', (event) => {
-        if (event.target === resizeHandle) return; // Prevent dragging when resizing
+        if (event.target === resizeHandle || event.target.closest('.tab-container')) return; // Prevent dragging when resizing or clicking on tabs
         offsetX = event.clientX - windowDiv.getBoundingClientRect().left;
         offsetY = event.clientY - windowDiv.getBoundingClientRect().top;
         document.addEventListener('mousemove', onMouseMove);
@@ -108,8 +137,10 @@ function createWindowWithIframe(url) {
     }
 
     document.body.appendChild(windowDiv);
+
+    // Create initial tabs
+    createTab('https://www.bing.com');
 }
 
 // Attach event listener to the Bing button
-bingButton.addEventListener('click', () => createWindowWithIframe('https://www.bing.com'));
-
+bingButton.addEventListener('click', createWindowWithTabs);
