@@ -7,6 +7,12 @@ var menu = {
         "Web Piano": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/piano.js",
         "History Flood": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/flood.js",
         "Spin": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/spin.js",
+        "Spin (but slower)": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/spin.js",
+        "Cloak": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/cloak.js",
+        "Inspect Element": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/xray.js",
+        "Rainbow Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/rainbow.js",
+        "Edit Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/edit.js"
+        "Ohio": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funni.js"
 };
 
 // CSS styles
