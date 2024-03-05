@@ -1,0 +1,1 @@
+(function() { var link = document.querySelector("link[rel*='icon']") || document.createElement('link'); link.type = 'image/x-icon'; link.rel = 'shortcut icon'; link.href = 'https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png'; document.title='Home - Google Drive'; console.log(document.title); document.getElementsByTagName('head')[0].appendChild(link);})();
