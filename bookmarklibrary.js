@@ -11,7 +11,7 @@ var menu = {
         "Cloak": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/cloak.js",
         "Inspect Element": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/xray.js",
         "Rainbow Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/rainbow.js",
-        "Edit Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/edit.js",
+        "Edit Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/editor.js",
         "Ohio": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funni.js",
 };
 
