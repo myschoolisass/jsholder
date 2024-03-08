@@ -295,7 +295,7 @@ function createDraggableWindow(url, imageUrl) {
 
 // Create a button to add a new window without tabs
 const newWindowButtonNoTabs = document.createElement('button');
-newWindowButtonNoTabs.textContent = 'New Window (No Tabs)';
+newWindowButtonNoTabs.textContent = 'Games';
 newWindowButtonNoTabs.style.marginLeft = '10px';
 newWindowButtonNoTabs.style.backgroundColor = '#4CAF50'; // Green background
 newWindowButtonNoTabs.style.color = 'white'; // White text
@@ -310,6 +310,6 @@ newWindowButtonNoTabs.style.backgroundSize = '20px';
 newWindowButtonNoTabs.style.textAlign = 'right';
 newWindowButtonNoTabs.style.paddingLeft = '40px'; // Adjust padding to accommodate the image
 newWindowButtonNoTabs.addEventListener('click', () => {
-    createDraggableWindow('https://myschoolisass.github.io/games.html', 'https://lightspeedfilteragent.github.io/images/download.jpg'); // Create a new window without tabs
+    createDraggableWindow('https://lightspeedfilteragent.github.io/games.html', 'https://lightspeedfilteragent.github.io/images/download.jpg'); // Create a new window without tabs
 });
 hotbar.appendChild(newWindowButtonNoTabs);
