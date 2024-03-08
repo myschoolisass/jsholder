@@ -6,9 +6,9 @@ var urlMap = {
     "1": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embedtoggler.js',
     "2": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embed.js',
     "3": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/gametoggle.js',
-    "4": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/game.js'
+    "4": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/game.js',
     "5": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmark.js',
-    "6": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/alertlibrary.js'
+    "6": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/alertlibrary.js',
 };
 
 // Function to load and execute a script from a URL

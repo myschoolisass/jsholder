@@ -11,8 +11,14 @@ var menu = {
         "Cloak": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/cloak.js",
         "Inspect Element": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/xray.js",
         "Rainbow Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/rainbow.js",
+        "Rainbow Page 2": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/rainbow2.js",
         "Edit Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/editor.js",
         "Ohio": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funni.js",
+        "Make Images Fly": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/image.js",
+        "High Contrast": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/invert.js",
+        "Blur Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/blur.js",
+        "Add Static": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/static.js",
+        "funni page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funnysite.js",
 };
 
 // CSS styles
