@@ -15,7 +15,7 @@ var urlMap = {
     "10": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/cloak.js',
     "11": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/xray.js',
     "12": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/rainbow.js',
-    "13": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/edit.js',
+    "13": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/editor.js',
     "14": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funni.js'
 };
 
