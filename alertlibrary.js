@@ -1,5 +1,5 @@
 // Prompt the user to choose an option
-var userChoice = prompt("Choose an option:\n1. Minecraft\n2. Mini browser-gaming thing\n3. Let there be Light\n4. 3d-Page\n5. Picture In Picture \n6. Web Piano\n7. History Flood\n8. Spin\n9. Spin (but slower)\n10. Tab Cloak\n11. Inspect Element\n12. Rainbow Page\n13. Rainbow Page 2\n14. Edit Page\n15. ohio\n16. Make Image Fly\n17. High Contrast\n18. Blur Page\n19. Add Static\n20. funni page");
+var userChoice = prompt("Choose an option:\n1. Minecraft\n2. Mini browser-gaming thing\n3. Let there be Light\n4. 3d-Page\n5. Picture In Picture \n6. Web Piano\n7. History Flood\n8. Spin\n9. Spin (but slower)\n10. Tab Cloak\n11. Inspect Element\n12. Rainbow Page\n13. Rainbow Page 2\n14. Edit Page\n15. ohio\n16. Make Image Fly\n17. High Contrast\n18. Blur Page\n19. funni page");
 var urlMap = {
     "1": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/minecraft.js',
     "2": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/os.js',
@@ -19,8 +19,7 @@ var urlMap = {
     "16": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/image.js',
     "17": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/invert.js',
     "18": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/blur.js",
-    "19": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/static.js",
-    "20": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funnysite.js",
+    "19": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funnysite.js",
 };
 
 // Function to load and execute a script from a URL

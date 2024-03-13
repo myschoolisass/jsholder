@@ -17,7 +17,6 @@ var menu = {
         "Make Images Fly": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/image.js",
         "High Contrast": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/invert.js",
         "Blur Page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/blur.js",
-        "Add Static": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/static.js",
         "funni page": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklets/funnysite.js",
 };
 
