@@ -3,12 +3,12 @@ var userChoice = prompt("Choose an option:\n1. Proxy with toggle\n2. Proxy (alon
 
 // Object to map user choices to URLs
 var urlMap = {
-    "1": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embedtoggler.js',
-    "2": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embed.js',
-    "3": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/gametoggle.js',
-    "4": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/game.js',
-    "5": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmark.js',
-    "6": 'https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/alertlibrary.js',
+    "1": 'https://raw.githubusercontent.com/myschoolisass/jsholder/main/embedtoggler.js',
+    "2": 'https://raw.githubusercontent.com/myschoolisass/jsholder/main/embed.js',
+    "3": 'https://raw.githubusercontent.com/myschoolisass/jsholder/main/gametoggle.js',
+    "4": 'https://raw.githubusercontent.com/myschoolisass/jsholder/main/game.js',
+    "5": 'https://raw.githubusercontent.com/myschoolisass/jsholder/main/bookmark.js',
+    "6": 'https://raw.githubusercontent.com/myschoolisass/jsholder/main/alertlibrary.js',
 };
 
 // Function to load and execute a script from a URL
