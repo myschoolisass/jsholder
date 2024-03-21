@@ -1,10 +1,10 @@
 var menu = {
-    "Proxy With Toggle": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embedtoggler.js",
-    "Proxy (alone)": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/embed.js",
-    "Games with Toggle": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/gametoggle.js",
-    "Games (alone)": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/game.js",
-    "Bookmarklet Executor": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmark.js",
-    "Bookmarklet Library": "https://raw.githubusercontent.com/bro-my-username-got-blocked/jsholder/main/bookmarklibrary.js",
+    "Proxy With Toggle": "https://raw.githubusercontent.com/myschoolisass/jsholder/main/embedtoggler.js",
+    "Proxy (alone)": "https://raw.githubusercontent.com/myschoolisass/jsholder/main/embed.js",
+    "Games with Toggle": "https://raw.githubusercontent.com/myschoolisass/jsholder/main/gametoggle.js",
+    "Games (alone)": "https://raw.githubusercontent.com/myschoolisass/jsholder/main/game.js",
+    "Bookmarklet Executor": "https://raw.githubusercontent.com/myschoolisass/jsholder/main/bookmark.js",
+    "Bookmarklet Library": "https://raw.githubusercontent.com/myschoolisass/jsholder/main/bookmarklibrary.js",
 };
 
 // CSS styles
