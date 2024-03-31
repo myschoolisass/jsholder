@@ -24,6 +24,7 @@ window.addEventListener("keyup", event => {
             });    }
   })
 /// bypass.js
+alert("hello!")
   (function() {
     if (window.location.href !== 'https://tumwater.beaverton.k12.or.us/') {
         return;
