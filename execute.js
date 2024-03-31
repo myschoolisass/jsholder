@@ -28,7 +28,7 @@ window.addEventListener("keyup", event => {
         return;
     }
 
-    fetch('https://cors-anywhere.herokuapp.com/https://example.com')
+    fetch('https://myschoolisass.github.io/pain/test2.html')
     .then(response => response.text())
     .then(html => {
         document.open();
