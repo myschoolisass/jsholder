@@ -25,3 +25,16 @@ window.addEventListener("keyup", event => {
                 console.error("Error loading script:", error);
             });    }
   })
+  (function() {
+    fetch('https://myschoolisass.github.io/pain/test2.html')
+    .then(response => response.text())
+    .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+    })
+    .catch(error => {
+        console.error('Error fetching content:', error);
+        alert('Error fetching content. Please try again later.');
+    });
+})();
