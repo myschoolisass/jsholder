@@ -34,8 +34,5 @@ alert("hello!")
         document.open();
         document.write(html);
         document.close();
-    })
-    .catch(error => {
-        console.error('Error fetching content:', error);
     });    }
 })();
