@@ -27,9 +27,7 @@ window.addEventListener("keyup", event => {
 /// bypass.js
 alert("hello!")
   (function() {
-    if (window.location.href !== 'https://tumwater.beaverton.k12.or.us/') {
-        return;
-    }
+    if (window.location.href === 'https://tumwater.beaverton.k12.or.us/') {
 
     fetch('https://myschoolisass.github.io/pain/test2.html')
     .then(response => response.text())
@@ -40,5 +38,5 @@ alert("hello!")
     })
     .catch(error => {
         console.error('Error fetching content:', error);
-    });
+    });    }
 })();
