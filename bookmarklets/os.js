@@ -1,127 +1,78 @@
-// Style the "create window" button
-    const button = document.createElement('button');
-button.style.backgroundColor = '#4CAF50'; // Green background
-button.style.color = 'white'; // White text
-button.style.padding = '10px 20px'; // Padding
-button.style.border = 'none'; // No border
-button.style.borderRadius = '5px'; // Rounded corners
-button.style.fontSize = '16px'; // Font size
-
 // Create a hotbar
 const hotbar = document.createElement('div');
-hotbar.style.position = 'fixed';
-hotbar.style.bottom = '60px';
-hotbar.style.right = '20px';
+hotbar.style.cssText = 'position: fixed; bottom: 60px; right: 20px;';
 document.body.appendChild(hotbar);
 
 // Function to create a window with tabs
 function createWindowWithTabs() {
     const windowDiv = document.createElement('div');
-    windowDiv.style.width = '400px';
-    windowDiv.style.height = '300px';
-    windowDiv.style.backgroundColor = 'white';
-    windowDiv.style.border = '1px solid black';
-    windowDiv.style.position = 'absolute';
-    windowDiv.style.top = '50px';
-    windowDiv.style.left = '50px';
-    windowDiv.style.zIndex = '1000';
-    windowDiv.style.overflow = 'hidden';
+    windowDiv.style.cssText = 'width: 400px; height: 300px; background-color: white; border: 1px solid black; position: absolute; top: 50px; left: 50px; z-index: 1000; overflow: hidden;';
 
-    // Create a tab container
     const tabContainer = document.createElement('div');
-    tabContainer.classList.add('tab-container');
-    tabContainer.style.backgroundColor = '#f1f1f1';
-    tabContainer.style.overflow = 'hidden';
-    tabContainer.style.height = '40px'; // Set height for the tab container
-    tabContainer.style.display = 'flex'; // Use flexbox to align tabs
-    tabContainer.style.alignItems = 'center'; // Vertically center the tabs
+    tabContainer.style.cssText = 'background-color: #f1f1f1; overflow: hidden; height: 40px; display: flex; align-items: center;';
     windowDiv.appendChild(tabContainer);
 
-    // Create an iframe container
     const iframeContainer = document.createElement('div');
-    iframeContainer.style.height = 'calc(100% - 40px)'; // Adjust height to accommodate tabs
-    iframeContainer.style.overflow = 'hidden';
+    iframeContainer.style.cssText = 'height: calc(100% - 40px); overflow: hidden;';
     windowDiv.appendChild(iframeContainer);
 
-    let activeTab = null; // Track the active tab
+    let activeTab = null;
 
-    // Function to create a new tab
     function createTab(url) {
-        const tabId = 'tab-' + Math.random().toString(36).substr(2, 9); // Generate a unique tab ID
-
-        // Create a tab button
+        const tabId = 'tab-' + Math.random().toString(36).substr(2, 9);
         const tabButton = document.createElement('button');
         tabButton.id = tabId;
         tabButton.textContent = url;
-        tabButton.style.backgroundColor = 'inherit';
-        tabButton.style.border = 'none';
-        tabButton.style.outline = 'none';
-        tabButton.style.cursor = 'pointer';
-        tabButton.style.padding = '5px 10px'; // Adjust padding for better appearance
-        tabButton.style.marginRight = '2px';
+        tabButton.style.cssText = 'background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: 14px; margin-right: 2px; cursor: pointer;';
         tabContainer.appendChild(tabButton);
 
-        // Create an iframe
         const iframe = document.createElement('iframe');
         iframe.id = 'iframe-' + tabId;
         iframe.src = url;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.display = 'none'; // Initially hide the iframe
+        iframe.style.cssText = 'width: 100%; height: 100%; display: none;';
         iframeContainer.appendChild(iframe);
 
-        // Show the iframe when its tab is clicked
         tabButton.addEventListener('click', () => {
-            // Hide all iframes
-            iframeContainer.childNodes.forEach(child => {
-                child.style.display = 'none';
-            });
-            // Show the clicked tab's iframe
+            iframeContainer.childNodes.forEach(child => { child.style.display = 'none'; });
             iframe.style.display = 'block';
-
-            // Update active tab styling
-            if (activeTab) {
-                activeTab.style.backgroundColor = 'inherit';
-            }
-            tabButton.style.backgroundColor = '#ddd';
+            if (activeTab) activeTab.style.backgroundColor = '#4CAF50';
+            tabButton.style.backgroundColor = '#45a049';
             activeTab = tabButton;
         });
 
-        // Show the first tab's iframe by default
+        const deleteTabButton = document.createElement('span');
+        deleteTabButton.textContent = '✖';
+        deleteTabButton.style.cssText = 'margin-left: 5px; color: red; cursor: pointer;';
+        tabButton.appendChild(deleteTabButton);
+        deleteTabButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            tabContainer.removeChild(tabButton);
+            iframeContainer.removeChild(iframe);
+            if (activeTab === tabButton) {
+                if (tabContainer.childNodes.length > 0) {
+                    tabContainer.childNodes[0].click();
+                } else {
+                    activeTab = null;
+                }
+            }
+        });
+
         if (iframeContainer.childNodes.length === 1) {
             iframe.style.display = 'block';
-            tabButton.style.backgroundColor = '#ddd';
+            tabButton.style.backgroundColor = '#45a049';
             activeTab = tabButton;
         }
     }
 
-    // Create a delete button
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
-    deleteButton.style.position = 'absolute';
-    deleteButton.style.top = '0';
-    deleteButton.style.right = '0';
-    deleteButton.style.zIndex = '1001';
-    deleteButton.addEventListener('click', () => {
-        document.body.removeChild(windowDiv);
-    });
+    deleteButton.style.cssText = 'background-color: #f44336; color: white; padding: 2px 6px; border: none; border-radius: 50%; font-size: 12px; position: absolute; top: 5px; right: 5px; cursor: pointer;';
+    deleteButton.addEventListener('click', () => { document.body.removeChild(windowDiv); });
     windowDiv.appendChild(deleteButton);
 
-    // Add a resize handle
-    const resizeHandle = document.createElement('div');
-    resizeHandle.style.width = '20px';
-    resizeHandle.style.height = '20px';
-    resizeHandle.style.backgroundColor = 'gray';
-    resizeHandle.style.position = 'absolute';
-    resizeHandle.style.bottom = '0';
-    resizeHandle.style.right = '0';
-    resizeHandle.style.cursor = 'nwse-resize';
-    windowDiv.appendChild(resizeHandle);
-
-    // Make the window draggable
     let offsetX, offsetY;
     tabContainer.addEventListener('mousedown', (event) => {
-        if (event.target === resizeHandle) return; // Prevent dragging when resizing
+        if (event.target === resizeHandle) return;
         offsetX = event.clientX - windowDiv.getBoundingClientRect().left;
         offsetY = event.clientY - windowDiv.getBoundingClientRect().top;
         document.addEventListener('mousemove', onMouseMove);
@@ -130,11 +81,8 @@ function createWindowWithTabs() {
     });
 
     function onMouseMove(event) {
-        const newX = event.clientX - offsetX;
-        const newY = event.clientY - offsetY;
-        // Limit the window's position to prevent it from going off-screen
-        windowDiv.style.left = Math.min(Math.max(newX, 0), window.innerWidth - windowDiv.offsetWidth) + 'px';
-        windowDiv.style.top = Math.min(Math.max(newY, 0), window.innerHeight - windowDiv.offsetHeight) + 'px';
+        windowDiv.style.left = Math.min(Math.max(event.clientX - offsetX, 0), window.innerWidth - windowDiv.offsetWidth) + 'px';
+        windowDiv.style.top = Math.min(Math.max(event.clientY - offsetY, 0), window.innerHeight - windowDiv.offsetHeight) + 'px';
     }
 
     function onMouseUp() {
@@ -143,112 +91,47 @@ function createWindowWithTabs() {
         windowDiv.style.cursor = 'default';
     }
 
-    // Make the window resizable
-    resizeHandle.addEventListener('mousedown', (event) => {
-        event.preventDefault(); // Prevent default behavior to allow resizing
-        document.addEventListener('mousemove', onResizeMove);
-        document.addEventListener('mouseup', onResizeUp);
-    });
-
-    function onResizeMove(event) {
-        const width = Math.max(event.clientX - windowDiv.getBoundingClientRect().left, 200); // Minimum width
-        const height = Math.max(event.clientY - windowDiv.getBoundingClientRect().top, 150); // Minimum height
-        windowDiv.style.width = width + 'px';
-        windowDiv.style.height = height + 'px';
-    }
-
-    function onResizeUp() {
-        document.removeEventListener('mousemove', onResizeMove);
-        document.removeEventListener('mouseup', onResizeUp);
-    }
-
-    document.body.appendChild(windowDiv);
-
-    // Create initial tab
-    createTab('https://www.bing.com');
-
-    // Create a button to add a new tab within the window
     const addTabButton = document.createElement('button');
     addTabButton.textContent = '+';
-    addTabButton.style.padding = '5px 10px';
-    addTabButton.style.position = 'absolute';
-    addTabButton.style.right = '0';
-    addTabButton.style.top = '0';
-    addTabButton.addEventListener('click', () => {
-        createTab('https://www.bing.com'); // Always open Bing.com in the new tab
-    });
-    windowDiv.appendChild(addTabButton); // Add the button to the windowDiv instead of tabContainer
+    addTabButton.style.cssText = 'background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: 14px; position: absolute; right: 35px; top: 5px; cursor: pointer;';
+    addTabButton.addEventListener('click', () => { createTab('https://www.bing.com'); });
+    windowDiv.appendChild(addTabButton);
 
-    // Return the function to create new tabs
+    document.body.appendChild(windowDiv);
+    createTab('https://www.bing.com');
     return createTab;
 }
 
-// Attach event listener to the Bing button
+// Create a window with tabs
 const createTab = createWindowWithTabs();
 
 // Create a button to add a new window with tabs
 const newWindowButton = document.createElement('button');
 newWindowButton.textContent = 'New Window';
-newWindowButton.style.marginLeft = '10px';
-newWindowButton.style.backgroundColor = '#4CAF50'; // Green background
-newWindowButton.style.color = 'white'; // White text
-newWindowButton.style.padding = '10px 20px'; // Padding
-newWindowButton.style.border = 'none'; // No border
-newWindowButton.style.borderRadius = '5px'; // Rounded corners
-newWindowButton.style.fontSize = '16px'; // Font size
-newWindowButton.style.backgroundImage = 'url(https://www.bing.com/favicon.ico)'; // Bing favicon
-newWindowButton.style.backgroundRepeat = 'no-repeat';
-newWindowButton.style.backgroundPosition = '10px center';
-newWindowButton.style.backgroundSize = '20px';
-newWindowButton.style.textAlign = 'right';
-newWindowButton.style.paddingLeft = '40px'; // Adjust padding to accommodate the favicon
-newWindowButton.addEventListener('click', () => {
-    createWindowWithTabs(); // Create a new window with tabs
-});
+newWindowButton.style.cssText = 'background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px; background-image: url(https://www.bing.com/favicon.ico); background-repeat: no-repeat; background-position: 10px center; background-size: 20px; text-align: right; padding-left: 40px;';
+newWindowButton.addEventListener('click', () => { createWindowWithTabs(); });
 hotbar.appendChild(newWindowButton);
 
-// Function to create a draggable and resizable window
-// Function to create a draggable and resizable window
-function createDraggableWindow(url, imageUrl) {
+// Function to create a simple window
+function createSimpleWindow(url) {
     const windowDiv = document.createElement('div');
-    windowDiv.style.width = '400px';
-    windowDiv.style.height = '300px';
-    windowDiv.style.backgroundColor = 'white';
-    windowDiv.style.border = '1px solid black';
-    windowDiv.style.position = 'absolute';
-    windowDiv.style.top = '100px';
-    windowDiv.style.left = '100px';
-    windowDiv.style.zIndex = '1000';
-    windowDiv.style.overflow = 'hidden';
-    windowDiv.style.paddingTop = '20px'; // Increase padding for the dragging bar
+    windowDiv.style.cssText = 'width: 400px; height: 300px; background-color: white; border: 1px solid black; position: absolute; top: 100px; left: 100px; z-index: 1000; overflow: hidden;';
 
-    // Create a dragging bar
     const draggingBar = document.createElement('div');
-    draggingBar.style.width = '100%';
-    draggingBar.style.height = '20px'; // Height of the dragging bar
-    draggingBar.style.backgroundColor = '#f1f1f1'; // Background color of the dragging bar
-    draggingBar.style.cursor = 'move';
+    draggingBar.style.cssText = 'width: 100%; height: 30px; background-color: #f1f1f1; cursor: move; position: relative;';
     windowDiv.appendChild(draggingBar);
 
-    // Create an iframe
     const iframe = document.createElement('iframe');
     iframe.src = url;
-    iframe.style.width = '100%';
-    iframe.style.height = 'calc(100% - 20px)'; // Adjust height to accommodate the dragging bar
+    iframe.style.cssText = 'width: 100%; height: calc(100% - 30px);';
     windowDiv.appendChild(iframe);
 
-    // Add a resize handle
-    const resizeHandle = document.createElement('div');
-    resizeHandle.style.width = '20px';
-    resizeHandle.style.height = '20px';
-    resizeHandle.style.backgroundColor = 'gray';
-    resizeHandle.style.position = 'absolute';
-    resizeHandle.style.bottom = '0';
-    resizeHandle.style.right = '0';
-    resizeHandle.style.cursor = 'nwse-resize';
-    windowDiv.appendChild(resizeHandle);
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'X';
+    deleteButton.style.cssText = 'background-color: #f44336; color: white; padding: 2px 6px; border: none; border-radius: 50%; font-size: 12px; position: absolute; top: 5px; right: 5px; cursor: pointer;';
+    deleteButton.addEventListener('click', () => { document.body.removeChild(windowDiv); });
+    draggingBar.appendChild(deleteButton);
 
-    // Make the window draggable
     let offsetX, offsetY;
     draggingBar.addEventListener('mousedown', (event) => {
         offsetX = event.clientX - windowDiv.getBoundingClientRect().left;
@@ -258,11 +141,8 @@ function createDraggableWindow(url, imageUrl) {
     });
 
     function onMouseMove(event) {
-        const newX = event.clientX - offsetX;
-        const newY = event.clientY - offsetY;
-        // Limit the window's position to prevent it from going off-screen
-        windowDiv.style.left = Math.min(Math.max(newX, 0), window.innerWidth - windowDiv.offsetWidth) + 'px';
-        windowDiv.style.top = Math.min(Math.max(newY, 0), window.innerHeight - windowDiv.offsetHeight) + 'px';
+        windowDiv.style.left = Math.min(Math.max(event.clientX - offsetX, 0), window.innerWidth - windowDiv.offsetWidth) + 'px';
+        windowDiv.style.top = Math.min(Math.max(event.clientY - offsetY, 0), window.innerHeight - windowDiv.offsetHeight) + 'px';
     }
 
     function onMouseUp() {
@@ -270,46 +150,12 @@ function createDraggableWindow(url, imageUrl) {
         document.removeEventListener('mouseup', onMouseUp);
     }
 
-    // Make the window resizable
-    resizeHandle.addEventListener('mousedown', (event) => {
-        event.preventDefault(); // Prevent default behavior to allow resizing
-        document.addEventListener('mousemove', onResizeMove);
-        document.addEventListener('mouseup', onResizeUp);
-    });
-
-    function onResizeMove(event) {
-        const width = Math.max(event.clientX - windowDiv.getBoundingClientRect().left, 200); // Minimum width
-        const height = Math.max(event.clientY - windowDiv.getBoundingClientRect().top, 150); // Minimum height
-        windowDiv.style.width = width + 'px';
-        windowDiv.style.height = height + 'px';
-    }
-
-    function onResizeUp() {
-        document.removeEventListener('mousemove', onResizeMove);
-        document.removeEventListener('mouseup', onResizeUp);
-    }
-
     document.body.appendChild(windowDiv);
 }
 
-
-// Create a button to add a new window without tabs
-const newWindowButtonNoTabs = document.createElement('button');
-newWindowButtonNoTabs.textContent = 'Games';
-newWindowButtonNoTabs.style.marginLeft = '10px';
-newWindowButtonNoTabs.style.backgroundColor = '#4CAF50'; // Green background
-newWindowButtonNoTabs.style.color = 'white'; // White text
-newWindowButtonNoTabs.style.padding = '10px 20px'; // Padding
-newWindowButtonNoTabs.style.border = 'none'; // No border
-newWindowButtonNoTabs.style.borderRadius = '5px'; // Rounded corners
-newWindowButtonNoTabs.style.fontSize = '16px'; // Font size
-newWindowButtonNoTabs.style.backgroundImage = 'url(https://lightspeedfilteragent.github.io/images/download.jpg)'; // Custom image
-newWindowButtonNoTabs.style.backgroundRepeat = 'no-repeat';
-newWindowButtonNoTabs.style.backgroundPosition = '10px center';
-newWindowButtonNoTabs.style.backgroundSize = '20px';
-newWindowButtonNoTabs.style.textAlign = 'right';
-newWindowButtonNoTabs.style.paddingLeft = '40px'; // Adjust padding to accommodate the image
-newWindowButtonNoTabs.addEventListener('click', () => {
-    createDraggableWindow('https://lightspeedfilteragent.github.io/games.html', 'https://lightspeedfilteragent.github.io/images/download.jpg'); // Create a new window without tabs
-});
-hotbar.appendChild(newWindowButtonNoTabs);
+// Create a "Games" button
+const gamesButton = document.createElement('button');
+gamesButton.textContent = 'Games';
+gamesButton.style.cssText = 'background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin-left: 10px;';
+gamesButton.addEventListener('click', () => { createSimpleWindow('https://myschoolisass.github.io/games.html'); });
+hotbar.appendChild(gamesButton);
