@@ -7,4 +7,4 @@ setTimeout(() => { (function() {
         document.write(html);
         document.close();
     });    }
-})(); }, 5000);
+})(); }, 1000);
