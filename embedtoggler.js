@@ -12,7 +12,7 @@ toggleButton.style.borderRadius = "5px"; // Rounded corners
 toggleButton.style.cursor = "pointer"; // Pointer cursor on hover
 
 const myIframe = document.createElement("iframe");
-myIframe.src = "https://myschoolisass.github.io/20xx/test2.html";
+myIframe.src = "https://myschoolisass.github.io/20xx/a.html";
 myIframe.style.cssText = "position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 9998;";
 
 document.body.appendChild(toggleButton);
